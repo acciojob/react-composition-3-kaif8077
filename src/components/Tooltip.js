@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import "./../styles/App.css"; // make sure path is correct
+import "./../styles/App.css";
 
 function Tooltip({ text, children }) {
   const [show, setShow] = useState(false);
 
   return (
-    <div
+    <div 
       className="tooltip"
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
     >
       {children}
-      {show && <div className="tooltiptext">{text}</div>}
+
+      {show && <div className="tooltip-text">{text}</div>}
     </div>
   );
 }
