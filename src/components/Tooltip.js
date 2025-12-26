@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import "../styles/App.css";
 
-const Tooltip = ({ text, children }) => {
+function Tooltip(props) {
+  const { text, children } = props;
   const [show, setShow] = useState(false);
 
-  return (
-    <div
-      className="tooltip-container"
-      onMouseEnter={() => setShow(true)}
-      onMouseLeave={() => setShow(false)}
-    >
-      {children}
-
-      {show && <div className="tooltip-text">{text}</div>}
-    </div>
-  );
-};
+  return React.cloneElement(children, {
+    className: "tooltip",
+    onMouseEnter: function () {
+      setShow(true);
+    },
+    onMouseLeave: function () {
+      setShow(false);
+    },
+    children: [
+      children.props.children,
+      show && React.createElement(
+        "div",
+        { className: "tooltip-text", key: "tooltip" },
+        text
+      )
+    ]
+  });
+}
 
 export default Tooltip;
-  

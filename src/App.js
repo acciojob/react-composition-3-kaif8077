@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/App.css";
 import Tooltip from "./components/Tooltip";
 
-const App = () => {
+function App() {
   return (
     <div className="app">
       <Tooltip text="This is a tooltip">
@@ -16,6 +16,6 @@ const App = () => {
       </Tooltip>
     </div>
   );
-};
+}
 
 export default App;
